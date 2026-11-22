@@ -13,7 +13,7 @@ React 19 · TypeScript · Vite 8 · Tailwind CSS v4 · Zustand
 [![Playwright](https://img.shields.io/badge/Playwright-10_tests-2EAD33?logo=playwright&logoColor=white)](https://playwright.dev/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-[功能](#功能) · [截图](#界面预览) · [快速开始](#快速开始) · [工程说明](#工程说明) · [测试](#测试) · [文档](#文档与验收记录)
+[功能](#功能) · [截图](#界面预览) · [快速开始](#快速开始) · [工程说明](#工程说明) · [测试](#测试)
 
 </div>
 
@@ -80,14 +80,12 @@ SSE 断线续播、幂等键与 Playwright 韧性用例——但它本质上仍�
 
 | 交易广场 | AI 导购与人工审批 |
 | :---: | :---: |
-| <img src="docs/assets/phase2-acceptance/01-browse-all.png" alt="交易广场：搜索、标签与商品卡片" width="420" /> | <img src="docs/assets/phase3-acceptance/06-approval-pending-viewport.png" alt="AI 导购：SSE 回复与高额订单审批卡" width="420" /> |
+| <img src="assets/screenshots/market.png" alt="交易广场：搜索、标签与商品卡片" width="420" /> | <img src="assets/screenshots/ai-copilot-approval.png" alt="AI 导购：SSE 回复与高额订单审批卡" width="420" /> |
 | 关键词 / AI 语义检索、标签筛选、抢购入口 | 工具调用时间线、流式回复、审批中断 |
 
 | 工作台 · 待审批收件箱 |
 | :---: |
-| <img src="docs/assets/phase4-acceptance/03-approval-inbox.png" alt="个人工作台：待审批收件箱" width="720" /> |
-
-更多阶段验收截图见 [`docs/assets`](docs/assets)。
+| <img src="assets/screenshots/studio-approval-inbox.png" alt="个人工作台：待审批收件箱" width="720" /> |
 
 ---
 
@@ -173,12 +171,12 @@ VITE_API_BASE_URL=http://localhost:8000
 │  ├─ lib/          # token 存取、格式化、错误提示
 │  ├─ types/        # 与后端对齐的 API 类型契约
 │  └─ hooks/
+├─ assets/          # README 预览图
 ├─ e2e/
 │  ├─ support/      # 登录态注入、接口 Mock 工具
 │  ├─ resilience.spec.ts
 │  ├─ sse-reconnect.spec.ts
 │  └─ hell-chaos.spec.ts
-├─ docs/            # 阶段验收报告与截图
 ├─ public/
 ├─ playwright.config.ts
 └─ vite.config.ts
@@ -221,23 +219,6 @@ npx playwright test          # 或 npm run test:e2e
   PLAYWRIGHT_CHANNEL=chromium npx playwright test   # Windows PowerShell: $env:PLAYWRIGHT_CHANNEL='chromium'
   ```
 - E2E 使用 `--mode test` 加载 `.env.test`，把 API 指到同源 `127.0.0.1:4173` 以便 `page.route` 拦截。
-
----
-
-## 文档与验收记录
-
-开发过程中按阶段留下了实现与验收报告，包含设计说明、关键代码和验收截图：
-
-| 文档 | 内容 |
-| --- | --- |
-| [PHASE2 验收报告](docs/PHASE2-ACCEPTANCE-REPORT.md) | 交易广场、检索、收藏与抢购 |
-| [PHASE3 验收报告](docs/PHASE3-ACCEPTANCE-REPORT.md) | AI Copilot、SSE 流式与审批闭环 |
-| [PHASE4 验收报告](docs/PHASE4-ACCEPTANCE-REPORT.md) | 工作台表单、订单与审批收件箱、管理台 |
-| [H2 韧性加固](docs/SPRINT-H2-RESILIENCE-REPORT.md) | Token 续期、ErrorBoundary、错误提示 |
-| [H2 验收](docs/SPRINT-H2-ACCEPTANCE-REPORT.md) | 韧性加固的验收记录 |
-| [H3-FE 验收](docs/SPRINT-H3-FE-ACCEPTANCE-REPORT.md) | 审批终态重提、幂等审计与混沌测试 |
-| [登出吊销接入](docs/FE-LOGOUT-TOKEN-REVOKE-REPORT.md) | `POST /auth/logout` 接入与 E2E 校验 |
-| [集成报告](docs/INTEGRATION-REPORT.md) | 前后端联调记录 |
 
 ---
 
