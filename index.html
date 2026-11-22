@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="闲小宝：二手交易与 AI 导购平台。混合语义检索、SSE 流式导购与高额交易审批闭环。"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <title>闲小宝 · 二手交易与 AI 导购</title>
+    <style>
+      html {
+        background: #ffffff;
+        color-scheme: light;
+      }
+      html.dark {
+        background: #09090b;
+        color-scheme: dark;
+      }
+    </style>
+    <script>
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('theme')
+          var isDark =
+            stored === 'dark' ||
+            (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          var root = document.documentElement
+          root.classList.toggle('dark', isDark)
+          root.style.colorScheme = isDark ? 'dark' : 'light'
+          var themeMeta = document.querySelector('meta[name="theme-color"]')
+          if (themeMeta) {
+            themeMeta.setAttribute('content', isDark ? '#09090b' : '#ffffff')
+          }
+        } catch (error) {
+          void error
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
